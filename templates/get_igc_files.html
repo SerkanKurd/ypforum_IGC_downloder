@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toplu IGC Dosya İndirme </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page page-center page-igc">
+    <main>
+        <h1>
+            <center>
+                www.ypforum.com/leonardo
+                <br>Toplu IGC Dosyası İndirme
+            </center>
+        </h1>
+        <p>
+            www.ypforum.com/leonardo sitesinden indirmek istediğiniz kayıtların önce sorgusunu yapın. 
+            Sonra sayfanın linkini buraya yapıştırın.
+            <small>
+                <br>Not: Sadece ilk 10 kaydı indirir.
+            </small>
+        </p>
+        <form id="igc-form" method="POST" action="{{ url_for('get_files') }}">
+            <div>
+                <label for="igc-url">IGC file URL</label>
+                <input id="igc-url" name="igc_url" type="url" placeholder="https://www.ypforum.com/leonardo/tracks/world/alltimes/brand:all,cat:0,class:all,xctype:all,club:all,pilot:0_6573,takeoff:all" value="{{ igc_url|default('', true) }}" required />
+            </div>
+            <div class="form-actions">
+                <button type="submit">Dosyaları indir</button>
+                <button type="button" id="clear-form">Temizle</button>
+            </div>
+        </form>
+        <p id="download-status" class="status-message" aria-live="polite"></p>
+        <div id="result" class="result{% if igc_url %} is-visible{% endif %}">
+            {% if igc_url %}
+            <a href="{{ igc_url }}" target="_blank" rel="noopener">İndirme Tamamlandı:</a>
+            <ul>
+                {% for f in files %}
+                    <li><a href="{{ url_for('download_file', filename=f) }}" download>{{ f }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </main>
+    <script>
+        (function () {
+            const form = document.getElementById('igc-form');
+            const status = document.getElementById('download-status');
+            const clearButton = document.getElementById('clear-form');
+            if (!form || !status) {
+                return;
+            }
+
+            form.addEventListener('submit', function () {
+                status.textContent = 'İndirme başladı. Lütfen bekleyin...';
+            });
+
+            if (clearButton) {
+                clearButton.addEventListener('click', function () {
+                    const urlInput = document.getElementById('igc-url');
+                    if (urlInput) {
+                        urlInput.value = '';
+                        urlInput.focus();
+                    }
+                    status.textContent = '';
+                    const result = document.getElementById('result');
+                    if (result) {
+                        result.innerHTML = '';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
