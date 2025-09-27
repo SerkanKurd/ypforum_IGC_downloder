@@ -1,10 +1,10 @@
 <h1>Bu repo https://www.ypforum.com/leonardo sitesinden IGC dosyalarını kolayca indirmek için hazırlanmıştır.</h1>
 <br>
+<br>https://www.ypforum.com/leonardo/ adresinden alacağınız linki yapıştırıp dosyaları kolayca indirebilirsiniz.
+<img width="1231" height="628" alt="Screenshot 2025-09-27 at 09 04 34" src="https://github.com/user-attachments/assets/7e09aeae-d3e4-4e45-8719-ea0d51cc55cf" />
 <br>
-
-
+<br>
 <img width="558" height="531" alt="Screenshot 2025-09-27 at 08 48 04" src="https://github.com/user-attachments/assets/e2a0c0f8-1f76-4b4b-b00f-54318c632863" />
-
 <br>
 <br>
 <h2>Build Docker Container</h2>
