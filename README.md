@@ -15,3 +15,7 @@
 <br>
 <h2>Using PreBuilt Docker Container</h2>
 <code>docker run -d --name igcdownloader -p 8000:8000 serkankurd/igcdownloader:latest</code>
+<br>
+<br>
+<h2>Test Server</h2>
+<br>https://igcdownloader.serkankurd.uk/
